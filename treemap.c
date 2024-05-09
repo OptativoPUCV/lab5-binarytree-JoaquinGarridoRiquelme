@@ -97,32 +97,47 @@ TreeNode * minimum(TreeNode * x)
 
 void removeNode(TreeMap * tree, TreeNode* node) 
 {
+    //Si el nodo a borra es la raiz
     if(tree->root == node) tree->root = NULL;
-    TreeNode *hijo;
+    
+    //Variables para manipular las conexiones con mayor facilidad
+    TreeNode *nodo_borrar;
+    TreeNode *padre = nodo_borrar -> parent;
+    TreeNode *hijo = NULL;
     
     //Nodo sin hijos
-    if(node->left == NULL && node ->right == NULL) node = NULL;
-
-    //Nodo con un hijo
-    else if(node->left == NULL || node ->right == NULL)
+    if(nodo_borrar ->left == NULL && nodo_borrar ->right == NULL);
     {
-        if(node->right != NULL)
-            hijo = node -> right;
-            
-        else if(node ->left != NULL)
-            hijo = node -> left;
-
-        if(node -> parent == NULL)
-            tree->root = hijo;
-
-        else if(node -> parent -> left == node)
-            node -> parent -> left = hijo;
-
+        if(padre -> left == nodo_borrar)
+            padre -> left = NULL;
         else
-            node -> parent -> right = hijo;
+            padre -> right = NULL;
+        return;
+    }
 
-        if(hijo != NULL)
-            hijo -> parent = node -> parent;
+    //Nodo con un hijo(Cubriendo el caso anterior sabemos que tiene al menos 1 hijo)
+    if(nodo_borrar -> left == NULL || nodo_borrar -> right == NULL)
+    {
+        //Movemos las conexiones de nuestros nodos segun la direccion indicada
+        if(nodo_borrar -> left != NULL)
+            hijo = nodo_borrar -> left;
+        else
+            hijo = nodo_borrar -> right;
+        if(padre ->left == nodo_borrar)
+            padre -> left = hijo;
+        else
+            padre -> right = hijo;
+        hijo -> parent = padre;
+        return;
+    }
+
+    //Nodo con 2 hijos(Cubriendo los anteriores casos sabemos que hay 2 hijos)
+    //Para esto reemplazaremos el nodo a eliminar por su descendiente menor hacia la derecha
+    if(nodo_borrar -> left != NULL && nodo_borrar -> right != NULL)
+    {
+        TreeNode *aux = minimum(nodo_borrar->right);
+        removeNode(tree, aux);
+        nodo_borrar->pair = aux->pair;
     }
 }
 
