@@ -49,7 +49,6 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) 
 {
-    /*
     TreeNode *nuevo_nodo = createTreeNode(key,value);
     
     //Comprobamos que el arbol tenga raiz
@@ -71,32 +70,20 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             free(nuevo_nodo);
             return;
         }
+        //Encontramos un espacio disponible para insertar   
+        if(aux->left == NULL || aux->right == NULL) break;
             
-        else if(tree-> lower_than(key, aux -> pair -> key))
-        {
-            if(aux -> left == NULL)
-            {
-                aux -> left = nuevo_nodo;
-                nuevo_nodo -> parent = aux;
-                return;
-            }
-            else 
-                aux = aux -> left;
-        }
-            
-        else 
-        {
-            if(aux -> right == NULL)
-            {
-                aux -> right = nuevo_nodo;
-                nuevo_nodo -> parent = aux;
-                return;
-            }
-            else 
-                aux = aux -> right;
-        }
+        if(tree-> lower_than(aux-> pair->key, key)) aux = aux -> right;
+
+        else aux = aux ->left;
     }
-    */
+    //Ya teniendo identificadas las posiciones libres, insertamos
+    if(aux->left == NULL) aux->left = nuevo_nodo;
+
+    else aux->right = nuevo_nodo;
+
+    nuevo_nodo -> parent = aux;
+    tree -> current = nuevo_nodo;
 }
 
 TreeNode * minimum(TreeNode * x)
@@ -108,8 +95,9 @@ TreeNode * minimum(TreeNode * x)
 }
 
 
-void removeNode(TreeMap * tree, TreeNode* node) {
-
+void removeNode(TreeMap * tree, TreeNode* node) 
+{
+    
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
