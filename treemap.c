@@ -67,9 +67,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
     {
         //Comprobamos que el dato no se encuentre repetido
         if(is_equal(tree, aux -> pair -> key, key)) 
+        {
             free(nuevo_nodo);
             return;
-
+        }
         else if(tree-> lower_than(key, aux -> pair -> key))
         {
             if(aux -> left == NULL)
