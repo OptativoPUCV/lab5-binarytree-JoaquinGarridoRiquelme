@@ -77,8 +77,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
     Pair *aux = firstTreeMap(tree);
     while(aux != NULL)
     {
-        if(aux-> key == key) return aux;
-         aux = nextTreeMap(tree);
+        if(is_equal(tree, aux->key, key)) return aux;
+        aux = nextTreeMap(tree);
     }
     return NULL;
 }
