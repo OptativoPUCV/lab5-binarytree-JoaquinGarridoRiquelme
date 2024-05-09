@@ -70,7 +70,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             free(nuevo_nodo);
             return;
 
-        if(tree-> lower_than(key, aux -> pair -> key))
+        else if(tree-> lower_than(key, aux -> pair -> key))
         {
             if(aux -> left == NULL)
             {
