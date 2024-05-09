@@ -105,7 +105,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     //Nodo con un hijo
     else if(node->left == NULL || node ->right == NULL)
     {
-        if(node->left == NULL)
+        //if(node->left == NULL)
     }
 }
 
