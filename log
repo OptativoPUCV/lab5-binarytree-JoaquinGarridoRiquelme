@@ -98,3 +98,9 @@ treemap.h:23:30: note: expected ‘TreeMap *’ but argument is of type ‘TreeN
 cc1: all warnings being treated as errors
 Compilation failed
 a5d2335
+Thu 09 May 2024 12:26:57 AM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  4|7
+total_score: 5/70
+7246382
