@@ -106,7 +106,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     TreeNode *hijo = NULL;
     
     //Nodo sin hijos
-    if(nodo_borrar ->left == NULL && nodo_borrar ->right == NULL);
+    if(nodo_borrar ->left == NULL && nodo_borrar ->right == NULL)
     {
         if(padre -> left == nodo_borrar)
             padre -> left = NULL;
@@ -116,7 +116,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     }
 
     //Nodo con un hijo(Cubriendo el caso anterior sabemos que tiene al menos 1 hijo)
-    if(nodo_borrar -> left == NULL || nodo_borrar -> right == NULL)
+    else if(nodo_borrar -> left == NULL || nodo_borrar -> right == NULL)
     {
         //Movemos las conexiones de nuestros nodos segun la direccion indicada
         if(nodo_borrar -> left != NULL)
@@ -133,7 +133,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
 
     //Nodo con 2 hijos(Cubriendo los anteriores casos sabemos que hay 2 hijos)
     //Para esto reemplazaremos el nodo a eliminar por su descendiente menor hacia la derecha
-    if(nodo_borrar -> left != NULL && nodo_borrar -> right != NULL)
+    else if(nodo_borrar -> left != NULL && nodo_borrar -> right != NULL)
     {
         TreeNode *aux = minimum(nodo_borrar->right);
         removeNode(tree, aux);

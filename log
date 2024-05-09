@@ -280,3 +280,14 @@ treemap.c:105:15: error: ‘nodo_borrar’ is used uninitialized [-Werror=uninit
 cc1: all warnings being treated as errors
 Compilation failed
 9870629
+Thu 09 May 2024 04:52:32 PM UTC: 
+ treemap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+test.c: In function ‘removeNode’:
+treemap.c:105:15: error: ‘nodo_borrar’ is used uninitialized [-Werror=uninitialized]
+  105 |     TreeNode *padre = nodo_borrar -> parent;
+      |               ^~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+b0f062e
