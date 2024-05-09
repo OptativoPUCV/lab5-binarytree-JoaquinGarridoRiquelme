@@ -49,7 +49,7 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) 
 {
-    
+    /*
     TreeNode *nuevo_nodo = createTreeNode(key,value);
     
     //Comprobamos que el arbol tenga raiz
@@ -96,15 +96,14 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                 aux = aux -> right;
         }
     }
+    */
 }
 
 TreeNode * minimum(TreeNode * x)
 {
     TreeNode *aux = x;
     while(aux-> left != NULL)
-    {
         aux = aux -> left;
-    }
     return aux;
 }
 
