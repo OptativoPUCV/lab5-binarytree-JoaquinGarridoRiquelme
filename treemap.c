@@ -101,7 +101,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     if(tree->root == node) tree->root = NULL;
     
     //Variables para manipular las conexiones con mayor facilidad
-    TreeNode *nodo_borrar;
+    TreeNode *nodo_borrar = node;
     TreeNode *padre = nodo_borrar -> parent;
     TreeNode *hijo = NULL;
     
