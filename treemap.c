@@ -66,9 +66,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
     while(true)
     {
         //Comprobamos que el dato no se encuentre repetido
-        if(is_equal(tree, aux -> pair -> key, key)) return;
+        if(is_equal(tree, aux -> pair -> key, key)) 
+            return;
 
-        if(key < aux -> pair -> key)
+        if(tree-> lower_than(key, aux -> pair -> key))
         {
             if(aux -> left == NULL)
             {
@@ -76,9 +77,11 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                 nuevo_nodo -> parent = aux;
                 return;
             }
-            else aux = aux -> left;
+            else 
+                aux = aux -> left;
         }
-        else if(key > aux -> pair -> key)
+            
+        else if(tree-> lower_than(aux -> pair -> key, key))
         {
             if(aux -> right == NULL)
             {
@@ -86,14 +89,15 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                 nuevo_nodo -> parent = aux;
                 return;
             }
-            else aux = aux -> right;
+            else 
+                aux = aux -> right;
         }
     }
-
 }
 
-TreeNode * minimum(TreeNode * x){
-
+TreeNode * minimum(TreeNode * x)
+{
+    TreeNode *aux = x;
     return NULL;
 }
 

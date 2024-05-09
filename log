@@ -134,3 +134,14 @@ Thu 09 May 2024 02:23:47 AM UTC:
  tests:  11|6
 total_score: 15/70
 07456c8
+Thu 09 May 2024 02:38:24 AM UTC: 
+ treemap.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘minimum’:
+treemap.c:100:15: error: unused variable ‘aux’ [-Werror=unused-variable]
+  100 |     TreeNode *aux = x;
+      |               ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+01063b1
