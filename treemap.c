@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "treemap.h"
+#include <stdbool.h>
 
 typedef struct TreeNode TreeNode;
 
@@ -46,7 +47,48 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
 }
 
 
-void insertTreeMap(TreeMap * tree, void* key, void * value) {
+void insertTreeMap(TreeMap * tree, void* key, void * value) 
+{
+    
+    TreeNode *nuevo_nodo = createTreeNode(key,value);
+    
+    //Comprobamos que el arbol tenga raiz
+    if(tree -> root == NULL)
+    {
+        tree -> root = nuevo_nodo;
+        tree -> current = nuevo_nodo;
+        return;
+    }
+
+    //Seguimos con el proceso sabiendo que no es la raiz,
+    //ademas creamos un auxiliar que en la raiz para avanzar 
+    TreeNode *aux = tree -> root;
+    while(true)
+    {
+        //Comprobamos que el dato no se encuentre repetido
+        if(is_equal(tree, aux -> pair -> key, key)) return;
+
+        if(key < aux -> pair -> key)
+        {
+            if(aux -> left == NULL)
+            {
+                aux -> left = nuevo_nodo;
+                nuevo_nodo -> parent = aux;
+                return;
+            }
+            else aux = aux -> left;
+        }
+        else if(key > aux -> pair -> key)
+        {
+            if(aux -> right == NULL)
+            {
+                aux -> right = nuevo_nodo;
+                nuevo_nodo -> parent = aux;
+                return;
+            }
+            else aux = aux -> right;
+        }
+    }
 
 }
 
