@@ -197,6 +197,25 @@ Pair * nextTreeMap(TreeMap * tree)
     {
         //En dicho caso, elegimos el nodo con la key mas pequena
         aux = minimum(aux -> right);
+        tree -> current = aux;
+        return aux -> pair;
     }
+
+    //Trabajamos el caso sin hijo derecho, por lo que buscamos un ancestro
+    //mayor al nodo actual
+    else
+    {
+        while(aux -> parent != NULL && aux -> parent -> right == aux)
+        {
+            aux = aux -> parent;
+        }
+        //Comprobamos que encontramos un ancestro mayor
+        if(aux -> parent != NULL)
+        {
+            tree -> current = aux -> parent;
+            return aux -> parent -> pair;
+        }
+    }
+    //En caso de no haber encontrado un ancestro mayor se retorna NULL
     return NULL;
 }
