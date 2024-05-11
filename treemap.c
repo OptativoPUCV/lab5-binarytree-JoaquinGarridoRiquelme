@@ -187,6 +187,16 @@ Pair * firstTreeMap(TreeMap * tree) {
     return primero->pair;
 }
 
-Pair * nextTreeMap(TreeMap * tree) {
+Pair * nextTreeMap(TreeMap * tree) 
+{
+    //Nos ubicamos en el elemento actual con un puntero auxiliar
+    TreeNode *aux = tree -> current;
+
+    //Verificamos si hay hijos hacia la derecha
+    if(aux -> right != NULL)
+    {
+        //En dicho caso, elegimos el nodo con la key mas pequena
+        aux = minimum(aux -> right);
+    }
     return NULL;
 }
