@@ -97,8 +97,6 @@ TreeNode * minimum(TreeNode * x)
 
 void removeNode(TreeMap * tree, TreeNode* node) 
 {
-    //Si el nodo a borra es la raiz
-    //if(tree->root == node) tree->root = NULL;
     
     //Variables para manipular las conexiones con mayor facilidad
     TreeNode *nodo_borrar = node;
