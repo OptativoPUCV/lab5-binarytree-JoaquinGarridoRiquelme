@@ -190,13 +190,15 @@ Pair * upperBound(TreeMap * tree, void* key)
         //Nos movemos en el arbol a traves de las comparaciones, ademas iremos
         //guardando los valores mayores a key, pero solo por el lado izquierdo
         //del arbol
-        if(tree -> lower_than(key, current -> pair -> key))
+        if(tree -> lower_than(current -> pair -> key, key))
         {
+            current = current -> right;
+        }
+        else
+        {    
             aux = current;
             current = current -> left;
         }
-        else
-            current = current -> right;
     }
     //Ya saliendo del bucle, deberemos comprobar que hemos guardado algo en aux al
     //menos una vez, de no ser asi, retornaremos NULL
